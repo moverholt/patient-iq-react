@@ -8,10 +8,10 @@ import {
 } from 'relay-runtime';
 
 
-import Emitter from './Emitter';
 
-// const url = "https://picks-staging-api.herokuapp.com/graphql";
-const url = "http://localhost:3000/graphql";
+// NOTE: Hack'd because this is exercise, otherwise would be ENV config
+// const url = "http://localhost:3000/graphql";
+const url = "https://matt-patient-iq.herokuapp.com/graphql";
 
 
 function fetchQuery(operation, variables) {
@@ -21,10 +21,11 @@ function fetchQuery(operation, variables) {
     'Content-Type': 'application/json',
   };
 
+  // NOTE: Hack'd auth because this is exercise
   const email = localStorage.getItem("email")
-	if (email) {
-		headers.Authorization = email;
-	}
+  if (email) {
+    headers.Authorization = email;
+  }
   console.log("---- Headers ----");
   console.log(headers);
   console.log("---- ----");

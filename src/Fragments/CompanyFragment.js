@@ -8,7 +8,7 @@ import {
   Card,
   Elevation,
 } from "@blueprintjs/core";
-// import UpdateEmployeeMutation from '../Mutations/UpdateEmployeeMutation';
+
 import graphql from 'babel-plugin-relay/macro';
 import React from 'react';
 
@@ -35,7 +35,7 @@ class CompanyFragment extends React.Component<Props, State> {
           <th>Department</th>
           <th>Full name</th>
           <th>Full address</th>
-          <th>Salary</th>
+          <th>Salary (in millions )</th>
           <th></th>
         </tr>
       </thead>
@@ -48,7 +48,7 @@ class CompanyFragment extends React.Component<Props, State> {
   render = () => (
     <React.Fragment>
       <h2>You're an admin for company: {this.props.company.name}</h2>
-      { this.renderEmployeeTable(this.props.company.employees) }
+      { this.renderEmployeeTable(this.props.company.topEarners) }
     </React.Fragment>
   )
 }
@@ -57,7 +57,7 @@ export default createFragmentContainer(CompanyFragment, graphql`
   fragment CompanyFragment_company on Company {
     id
     name
-    employees {
+    topEarners {
       id
       ...EmployeeRowFragment_employee
     }

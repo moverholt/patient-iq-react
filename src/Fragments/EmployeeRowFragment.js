@@ -12,6 +12,8 @@ import UpdateEmployeeMutation from '../Mutations/UpdateEmployeeMutation';
 import graphql from 'babel-plugin-relay/macro';
 import React from 'react';
 
+import { AppToaster } from "./../Toaster";
+
 import type { EmployeeRowFragment_employee } from './__generated__/EmployeeRowFragment_employee.graphql.js';
 
 
@@ -40,6 +42,14 @@ class EmployeeRowFragment extends React.Component<Props, State> {
     isInEditMode: false,
   }
 
+  static getDerivedStateFromProps = (props: Props, state: State) => {
+    if (state.hasFormChanged) {
+      return null;
+    }
+    const { fullAddress, fullName, salary } = props.employee;
+    return Object.assign({}, state, { fullAddress, fullName, salary })
+  }
+
   editButtonTitle = (hasFormChanged: boolean) => hasFormChanged ? "Save" : "Done"
 
   handleSubmit = () => {
@@ -61,6 +71,7 @@ class EmployeeRowFragment extends React.Component<Props, State> {
           this.setState(
             { isUpdatingEmployee: false, isInEditMode: false },
             () => {
+              AppToaster.show({ message: "Employee saved.", timeout: 1500 });
               console.log("All done!");
             }
           )

@@ -11,6 +11,7 @@ import CurrentUserQueryRenderer from './QueryRenderers/CurrentUserQueryRenderer'
 import Emitter from './Emitter';
 
 import './../node_modules/@blueprintjs/core/lib/css/blueprint.css';
+import './../node_modules/@blueprintjs/icons/lib/css/blueprint-icons.css';
 import './../node_modules/normalize.css/normalize.css';
 
 import './App.css';
@@ -24,14 +25,14 @@ class App extends React.Component<{}, State> {
     email: '',
   }
 
-	availableUsers = () => [
+  availableUsers = () => [
     "joe.maddon@cubs.com",
     "kyle.schwarber@cubs.com",
     "anythony.rizzo@cubs.com",
     "fred.hoidberg@bulls.com",
     "kris.dunn@bulls.com",
     "zach.dunn@bulls.com",
-	]
+  ]
 
   handleChange = (event: Object) => {
     localStorage.setItem('email', event.target.value);
@@ -56,7 +57,7 @@ class App extends React.Component<{}, State> {
     <React.Fragment>
       <Navbar>
         <Navbar.Group align={Alignment.LEFT}>
-          <Navbar.Heading>Patient - IQ</Navbar.Heading>
+          <Navbar.Heading>Matt O's PatientIQ Exercise</Navbar.Heading>
           {this.renderSelect()}
         </Navbar.Group>
       </Navbar>

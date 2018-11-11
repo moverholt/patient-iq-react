@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash 7d65cc7042c85477327b498dea80ffc3
+ * @relayHash 5c0bbcd91d48948d0e7b246b3c330dcc
  */
 
 /* eslint-disable */
@@ -66,7 +66,7 @@ fragment EmployeeFragment_employee on Employee {
 fragment CompanyFragment_company on Company {
   id
   name
-  employees {
+  topEarners {
     id
     ...EmployeeRowFragment_employee
   }
@@ -171,7 +171,7 @@ return {
   "operationKind": "query",
   "name": "CurrentUserQueryRendererQuery",
   "id": null,
-  "text": "query CurrentUserQueryRendererQuery {\n  currentUser {\n    id\n    email\n    employee {\n      ...EmployeeFragment_employee\n      id\n    }\n    company {\n      ...CompanyFragment_company\n      id\n    }\n  }\n}\n\nfragment EmployeeFragment_employee on Employee {\n  id\n  fullName\n  fullAddress\n  salary\n  isAdmin\n  company {\n    name\n    id\n  }\n  department {\n    name\n    id\n  }\n}\n\nfragment CompanyFragment_company on Company {\n  id\n  name\n  employees {\n    id\n    ...EmployeeRowFragment_employee\n  }\n}\n\nfragment EmployeeRowFragment_employee on Employee {\n  id\n  fullName\n  fullAddress\n  salary\n  isAdmin\n  company {\n    name\n    id\n  }\n  department {\n    name\n    id\n  }\n}\n",
+  "text": "query CurrentUserQueryRendererQuery {\n  currentUser {\n    id\n    email\n    employee {\n      ...EmployeeFragment_employee\n      id\n    }\n    company {\n      ...CompanyFragment_company\n      id\n    }\n  }\n}\n\nfragment EmployeeFragment_employee on Employee {\n  id\n  fullName\n  fullAddress\n  salary\n  isAdmin\n  company {\n    name\n    id\n  }\n  department {\n    name\n    id\n  }\n}\n\nfragment CompanyFragment_company on Company {\n  id\n  name\n  topEarners {\n    id\n    ...EmployeeRowFragment_employee\n  }\n}\n\nfragment EmployeeRowFragment_employee on Employee {\n  id\n  fullName\n  fullAddress\n  salary\n  isAdmin\n  company {\n    name\n    id\n  }\n  department {\n    name\n    id\n  }\n}\n",
   "metadata": {},
   "fragment": {
     "kind": "Fragment",
@@ -267,7 +267,7 @@ return {
               {
                 "kind": "LinkedField",
                 "alias": null,
-                "name": "employees",
+                "name": "topEarners",
                 "storageKey": null,
                 "args": null,
                 "concreteType": "Employee",

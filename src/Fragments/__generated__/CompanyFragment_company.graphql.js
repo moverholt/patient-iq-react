@@ -14,7 +14,7 @@ declare export opaque type CompanyFragment_company$ref: FragmentReference;
 export type CompanyFragment_company = {|
   +id: string,
   +name: ?string,
-  +employees: ?$ReadOnlyArray<{|
+  +topEarners: ?$ReadOnlyArray<{|
     +id: string,
     +$fragmentRefs: EmployeeRowFragment_employee$ref,
   |}>,
@@ -49,7 +49,7 @@ return {
     {
       "kind": "LinkedField",
       "alias": null,
-      "name": "employees",
+      "name": "topEarners",
       "storageKey": null,
       "args": null,
       "concreteType": "Employee",
@@ -67,5 +67,5 @@ return {
 };
 })();
 // prettier-ignore
-(node/*: any*/).hash = '2ddbb9f024ffa9bd9812265482a59be3';
+(node/*: any*/).hash = 'b270092b2342ba2118d1dfc215ebf93e';
 module.exports = node;

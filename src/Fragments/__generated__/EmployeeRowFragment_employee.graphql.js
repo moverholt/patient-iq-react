@@ -14,7 +14,7 @@ export type EmployeeRowFragment_employee = {|
   +id: string,
   +fullName: string,
   +fullAddress: string,
-  +salary: number,
+  +salary: string,
   +isAdmin: boolean,
   +company: {|
     +name: ?string

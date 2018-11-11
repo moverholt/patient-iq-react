@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash ec140394eccf54870a09440cd22fce81
+ * @relayHash 0f039c9963248ed2d20b90309ef0576c
  */
 
 /* eslint-disable */
@@ -25,7 +25,7 @@ export type UpdateEmployeeMutationResponse = {|
       +id: string,
       +fullName: string,
       +fullAddress: string,
-      +salary: number,
+      +salary: string,
     |}
   |}
 |};

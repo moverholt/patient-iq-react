@@ -17,7 +17,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "relay": "./node_modules/.bin/relay-compiler --src ./src --schema /tmp/schema.json"
+    "relay": "./node_modules/.bin/relay-compiler --src ./src --schema /tmp/schema.json",
+    "deploy": "yarn build && surge build matt-patient-iq.surge.sh"
   },
   "eslintConfig": {
     "extends": "react-app"

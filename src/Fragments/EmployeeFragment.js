@@ -12,6 +12,8 @@ import UpdateEmployeeMutation from '../Mutations/UpdateEmployeeMutation';
 import graphql from 'babel-plugin-relay/macro';
 import React from 'react';
 
+import { AppToaster } from "./../Toaster";
+
 import type { EmployeeFragment_employee } from './__generated__/EmployeeFragment_employee.graphql.js';
 
 
@@ -34,9 +36,17 @@ class EmployeeFragment extends React.Component<Props, State> {
     fullName: this.props.employee.fullName,
     fullAddress: this.props.employee.fullAddress,
     salary: this.props.employee.salary,
-
     hasFormChanged: false,
     isUpdatingEmployee: false,
+  }
+
+
+  static getDerivedStateFromProps = (props: Props, state: State) => {
+    if (state.hasFormChanged) {
+      return null;
+    }
+    const { fullAddress, fullName, salary } = props.employee;
+    return Object.assign({}, state, { fullAddress, fullName, salary })
   }
 
   handleSubmit = () => {
@@ -50,15 +60,17 @@ class EmployeeFragment extends React.Component<Props, State> {
         this.state.salary,
         (isSuccess) => {
           this.setState(
-            { isUpdatingEmployee: false },
+            { isUpdatingEmployee: false, hasFormChanged: false },
             () => {
               console.log("All done!");
+              AppToaster.show({ message: "Employee saved.", timeout: 1500 });
             }
           )
         }
       )
     })
   }
+
 
   render = () => (
     <Card interactive={true} elevation={Elevation.ONE}>
@@ -91,7 +103,7 @@ class EmployeeFragment extends React.Component<Props, State> {
           }}
         />
       </FormGroup>
-      <FormGroup label="Salary" labelFor="text-input">
+      <FormGroup label="Salary (in millions)" labelFor="text-input">
         <InputGroup
           disabled={!this.props.employee.isAdmin}
           value={this.state.salary}
